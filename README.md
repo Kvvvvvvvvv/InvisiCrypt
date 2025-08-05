@@ -1,33 +1,33 @@
-# InvisiCrypt - Advanced Steganography Platform
+# 🔐 InvisiCrypt - Advanced Steganography Platform
+
+> **🚀 Live Flask Web Application** | **🐍 Run with:** `python app.py`
 
 ![InvisiCrypt Logo](static/logo.webp)
 
-## 🔒 About InvisiCrypt
+## ⚡ Quick Demo
 
-InvisiCrypt is an advanced steganography platform that allows you to hide secret messages within images using sophisticated LSB (Least Significant Bit) techniques. This project was developed by **Keerthivasan E** from VIT Chennai as part of the Open Source Programming Club (OSPC) initiative.
-
-## 🚀 Quick Start
-
-### Run the Application
 ```bash
+# 1. Clone and setup
+git clone https://github.com/Kvvvvvvvvv/InvisiCrypt.git
+cd InvisiCrypt
+pip install -r requirements.txt
+
+# 2. Run the web application
 python app.py
+
+# 3. Open browser: http://localhost:5000
 ```
-Then open your browser and go to `http://localhost:5000`
 
-### Core Files
-- **`app.py`** - Main Flask application with steganography logic
-- **`templates/index.html`** - Beautiful cyberpunk-themed web interface
-- **`static/style.css`** - Modern responsive styling
-- **`requirements.txt`** - Python dependencies
+## 🎯 **Main Application: `app.py`**
 
-## 🌟 Features
+**Flask-based steganography web server** with cyberpunk UI for hiding secret messages in images.
 
-- **🔐 Advanced LSB Steganography**: Hide messages in image pixels imperceptibly
-- **🛡️ Password Protection**: Secure your hidden messages with password encryption
-- **📊 Database Tracking**: SQLite database to track encrypted images
-- **🎨 Modern UI/UX**: Cyberpunk-themed responsive web interface
-- **📱 Multi-format Support**: Works with various image formats
-- **🗑️ File Management**: Easy deletion of encrypted image records
+### 🔥 Core Features in `app.py`:
+- **LSB Steganography Algorithm** - Hides messages in image pixels
+- **Password Protection** - Secure encryption/decryption
+- **SQLite Database** - Tracks encrypted images
+- **Web Interface** - Beautiful cyberpunk-themed UI
+- **File Management** - Upload, encrypt, download functionality
 
 ## 🚀 Technology Stack
 
