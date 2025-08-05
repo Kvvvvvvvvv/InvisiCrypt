@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvisiCrypt - Secure Steganography</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo-section">
+                <div class="logo-container">
+                    <img src="{{ url_for('static', filename='logo.webp') }}" alt="InvisiCrypt Logo" class="logo">
+                </div>
+                <div>
+                    <h1>InvisiCrypt</h1>
+                    <p class="subtitle">Advanced Image Encryption & Decryption</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <div class="nav-buttons">
+            <button class="nav-btn encrypt-btn" onclick="scrollToSection('encrypt-section')">
+                🔒 Encrypt Messages
+            </button>
+            <button class="nav-btn decrypt-btn" onclick="scrollToSection('decrypt-section')">
+                🔓 Decrypt Messages
+            </button>
+            <button class="nav-btn about-btn" onclick="scrollToSection('about-section')">
+                ℹ️ About Steganography
+            </button>
+            <button class="nav-btn contact-btn" onclick="scrollToSection('contact-section')">
+                📧 Contact & Support
+            </button>
+        </div>
+        
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'success' if category == 'success' else 'error' }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- About Steganography Section -->
+        <div id="about-section" class="info-section">
+            <h2>🔍 What is Steganography?</h2>
+            <div class="info-content">
+                <p class="info-text">
+                    Steganography is the ancient art and science of hiding secret information within other non-secret data or physical objects. 
+                    The term comes from the Greek words "steganos" (covered) and "graphein" (writing), literally meaning "covered writing."
+                </p>
+                
+                <div class="creator-info">
+                    <h3>👨‍💻 About the Creator</h3>
+                    <p><strong>Keerthivasan E</strong> - Computer Science Student from VIT Chennai</p>
+                    <p>This project is developed as part of the Open Source Programming Club's initiative to promote cybersecurity awareness and practical implementation of steganography techniques.</p>
+                </div>
+                
+                <div class="info-grid">
+                    <div class="info-card">
+                        <h3>🎯 How It Works</h3>
+                        <p>InvisiCrypt uses advanced LSB (Least Significant Bit) steganography to embed secret messages within image pixels. 
+                        Each pixel's color channels are subtly modified to store binary data, making the changes imperceptible to the human eye.</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🛡️ Security Features</h3>
+                        <ul>
+                            <li>Password-protected encryption</li>
+                            <li>Advanced pixel manipulation</li>
+                            <li>Multiple image format support</li>
+                            <li>Secure message extraction</li>
+                            <li>Database tracking system</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>📊 Applications</h3>
+                        <ul>
+                            <li>Secure communication</li>
+                            <li>Digital watermarking</li>
+                            <li>Copyright protection</li>
+                            <li>Covert messaging</li>
+                            <li>Data integrity verification</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🔬 Technical Details</h3>
+                        <p>Our algorithm modifies the least significant bits of RGB color channels, 
+                        allowing up to 3 bits of data per pixel. This provides excellent capacity 
+                        while maintaining image quality and avoiding detection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Encryption Section -->
+        <div id="encrypt-section" class="form-container">
+            <div class="form-card">
+                <h2>🔒 Encrypt Message</h2>
+                <form action="/encrypt" method="post" enctype="multipart/form-data">
+                    <label for="image-enc">Upload Image:</label>
+                    <input type="file" id="image-enc" name="image" accept="image/*" required>
+                    
+                    <label for="message">Secret Message:</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Enter your secret message here..." required></textarea>
+                    
+                    <label for="password-enc">Password:</label>
+                    <input type="password" id="password-enc" name="password" placeholder="Enter a strong password" required>
+                    
+                    <button type="submit">🔐 Encrypt & Download</button>
+                </form>
+            </div>
+            
+            <div id="decrypt-section" class="form-card">
+                <h2>🔓 Decrypt Message</h2>
+                <form action="/decrypt" method="post" enctype="multipart/form-data">
+                    <label for="image-dec">Upload Encrypted Image:</label>
+                    <input type="file" id="image-dec" name="image" accept="image/*" required>
+                    
+                    <label for="password-dec">Password:</label>
+                    <input type="password" id="password-dec" name="password" placeholder="Enter the password used for encryption" required>
+                    
+                    <button type="submit">🔓 Decrypt Message</button>
+                </form>
+                
+                {% if decrypted_message %}
+                <div class="result">
+                    <h3>✅ Decrypted Message:</h3>
+                    <p>{{ decrypted_message }}</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Future Features Section -->
+        <div class="future-section">
+            <h2>🚀 Future Enhancements</h2>
+            <div class="future-grid">
+                <div class="future-card">
+                    <h3>🎵 Audio Steganography</h3>
+                    <p>Hide messages within audio files using frequency domain manipulation and psychoacoustic masking techniques.</p>
+                    <span class="status">Coming Soon</span>
+                </div>
+                
+                <div class="future-card">
+                    <h3>📹 Video Steganography</h3>
+                    <p>Advanced video steganography with temporal and spatial domain embedding for maximum capacity.</p>
+                    <span class="status">Coming Soon</span>
+                </div>
+                
+                <div class="future-card">
+                    <h3>🔐 Blockchain Integration</h3>
+                    <p>Secure message verification using blockchain technology for tamper-proof communication.</p>
+                    <span class="status">Coming Soon</span>
+                </div>
+                
+                <div class="future-card">
+                    <h3>🤖 AI-Powered Detection</h3>
+                    <p>Machine learning algorithms to detect and prevent steganographic attacks and improve security.</p>
+                    <span class="status">In Progress</span>
+                </div>
+                
+                <div class="future-card">
+                    <h3>📱 Mobile Application</h3>
+                    <p>Cross-platform mobile app for iOS and Android with real-time encryption and decryption.</p>
+                    <span class="status">In Progress</span>
+                </div>
+                
+                <div class="future-card">
+                    <h3>☁️ Cloud Integration</h3>
+                    <p>Secure cloud storage with end-to-end encryption and automatic backup of encrypted files.</p>
+                    <span class="status">In Progress</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Encrypted Images History -->
+        {% if encrypted_images %}
+        <div class="history-section">
+            <h2>📋 Encrypted Images History</h2>
+            <div class="table-container">
+                <table class="history-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Original Image</th>
+                            <th>Message Preview</th>
+                            <th>Created Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for image in encrypted_images %}
+                        <tr>
+                            <td>{{ image[0] }}</td>
+                            <td>{{ image[1] }}</td>
+                            <td>{{ image[2] }}</td>
+                            <td>{{ image[3] }}</td>
+                            <td>
+                                <form action="/delete/{{ image[0] }}" method="post" style="display: inline;">
+                                    <button type="submit" class="delete-btn" onclick="return confirm('Are you sure you want to delete this encrypted image?')">🗑️ Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Contact Section -->
+        <div id="contact-section" class="contact-section">
+            <h2>📧 Contact & Support</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>🛠️ Technical Support</h3>
+                    <p>For technical issues, bugs, or feature requests, please contact our development team.</p>
+                    <div class="contact-details">
+                        <p class="contact-info"><a href="mailto:opensourceprogrammingclub.vitc@gmail.com">opensourceprogrammingclub.vitc@gmail.com</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>💬 Community</h3>
+                    <p>Join our community forum to discuss steganography, share ideas, and get help.</p>
+                    <div class="contact-details">
+                        <p class="contact-info"><a href="https://ospcvitc.club/" target="_blank">ospcvitc.club</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>📱 Social Media</h3>
+                    <p>Follow OSPC VIT Chennai on social media for updates and announcements.</p>
+                    <div class="contact-details">
+                        <p class="contact-info"><a href="https://www.instagram.com/ospc_vitc/" target="_blank">@ospc_vitc</a></p>
+                    </div>
+                </div>
+                
+                <div class="contact-card">
+                    <h3>🔒 Security Reports</h3>
+                    <p>Report security vulnerabilities or concerns directly to the developer.</p>
+                    <div class="contact-details">
+                        <p class="contact-info"><a href="mailto:keerthivasaneofficial@gmail.com">keerthivasaneofficial@gmail.com</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Visual Elements -->
+            <div class="contact-extras">
+                <div class="extra-info">
+                    <h3>🌟 Project Highlights</h3>
+                    <ul>
+                        <li>🔐 Advanced LSB Steganography Algorithm</li>
+                        <li>🛡️ Password-Protected Encryption</li>
+                        <li>📊 Real-time Database Tracking</li>
+                        <li>🎨 Modern Cyberpunk UI/UX Design</li>
+                        <li>📱 Responsive Web Application</li>
+                        <li>🔒 Secure Message Extraction</li>
+                    </ul>
+                </div>
+                
+                <div class="extra-info">
+                    <h3>🎯 Technology Stack</h3>
+                    <ul>
+                        <li>🐍 Python Flask Backend</li>
+                        <li>🖼️ OpenCV Image Processing</li>
+                        <li>💾 SQLite Database</li>
+                        <li>🎨 HTML5 & CSS3 Frontend</li>
+                        <li>🔐 Cryptographic Hashing</li>
+                        <li>📱 Responsive Design</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="{{ url_for('static', filename='logo.webp') }}" alt="InvisiCrypt Logo" class="footer-logo-img">
+                </div>
+                <p class="copyright">
+                    <span class="author">InvisiCrypt</span> - Advanced Steganography Platform<br>
+                    <span class="version">v2.0</span> | Published by <span class="author">OSPC Club</span><br>
+                    Developed by <span class="author">Keerthivasan E</span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,29 @@
+Intermediate Level (Challenging)
+Goal: Add security, obfuscation, and usability
+
+🔐 AES or RSA encryption of the message before embedding
+
+📁 Support for other file types (e.g., hiding files in images or audio)
+
+👁️‍🗨️ Avoiding detection by steganalysis (e.g., random bit patterns)
+
+🌐 Web-based interface with file upload/download
+
+🎨 Better image quality preservation
+
+Difficulty: ⭐⭐⭐⭐ (4/5) — Requires good understanding of image processing, encryption, and web/app integration.
+
+🧠 Advanced Level (Hardcore/Cybersecurity Level)
+Goal: Build something resilient, undetectable, and useful for real-world ops
+
+🧬 Embedding in video, audio, or network packets (e.g., covert channels)
+
+🤖 Use ML to detect or avoid detection (anti-steganalysis or stego-detectors)
+
+🌐 Multi-layer steganography: e.g., hide encrypted ZIP + in an image + then inside video
+
+🔍 Watermarking + tamper detection
+
+🧱 Blockchain-based proof of hidden messages (audit trail / ownership)
+
+Difficulty: ⭐⭐⭐⭐⭐ (5/5) — Now you’re in serious cybersecurity or academic territory.
