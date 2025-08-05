@@ -6,6 +6,20 @@
 
 InvisiCrypt is an advanced steganography platform that allows you to hide secret messages within images using sophisticated LSB (Least Significant Bit) techniques. This project was developed by **Keerthivasan E** from VIT Chennai as part of the Open Source Programming Club (OSPC) initiative.
 
+## 🚀 Quick Start
+
+### Run the Application
+```bash
+python app.py
+```
+Then open your browser and go to `http://localhost:5000`
+
+### Core Files
+- **`app.py`** - Main Flask application with steganography logic
+- **`templates/index.html`** - Beautiful cyberpunk-themed web interface
+- **`static/style.css`** - Modern responsive styling
+- **`requirements.txt`** - Python dependencies
+
 ## 🌟 Features
 
 - **🔐 Advanced LSB Steganography**: Hide messages in image pixels imperceptibly
@@ -36,7 +50,7 @@ numpy
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/yourusername/InvisiCrypt.git
+   git clone https://github.com/Kvvvvvvvvv/InvisiCrypt.git
    cd InvisiCrypt
    ```
 
@@ -51,6 +65,34 @@ numpy
    ```
 
 4. **Open your browser** and navigate to `http://localhost:5000`
+
+## 📁 Project Structure
+
+```
+InvisiCrypt/
+├── app.py                 # Main Flask application
+├── templates/
+│   └── index.html        # Web interface
+├── static/
+│   ├── style.css         # Cyberpunk styling
+│   └── logo.webp         # Application logo
+├── uploads/              # Encrypted images storage
+├── requirements.txt      # Python dependencies
+├── stego.py             # Standalone steganography script
+├── Enc.py               # Encryption utility
+├── Decry.py             # Decryption utility
+└── README.md            # This file
+```
+
+## 💻 Core Application Code
+
+The main steganography logic is implemented in `app.py`:
+
+### Key Functions:
+- `embed_message()` - Embeds secret messages using LSB technique
+- `extract_message()` - Extracts hidden messages from images
+- `hash_password()` - Secure password hashing
+- Flask routes for encryption/decryption web interface
 
 ## 🎯 How It Works
 

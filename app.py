@@ -1,3 +1,24 @@
+"""
+InvisiCrypt - Advanced Steganography Platform
+============================================
+
+A Flask-based web application for hiding secret messages within images using 
+LSB (Least Significant Bit) steganography technique.
+
+Features:
+- Password-protected message encryption
+- Advanced LSB steganography algorithm  
+- SQLite database for tracking encrypted images
+- Modern cyberpunk-themed web interface
+- Multi-format image support
+
+Developer: Keerthivasan E (VIT Chennai)
+Organization: Open Source Programming Club (OSPC)
+
+Usage: python app.py
+Web Interface: http://localhost:5000
+"""
+
 import cv2
 import numpy as np
 from flask import Flask, request, render_template, send_file, flash, redirect, url_for, session
