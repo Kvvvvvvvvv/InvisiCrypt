@@ -4,19 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InvisiCrypt - Secure Steganography</title>
-    <!-- Main CSS link for Flask -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <!-- Backup CSS links -->
-    <link rel="stylesheet" href="/static/style.css">
-    <link rel="stylesheet" href="../static/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
             <div class="logo-section">
                 <div class="logo-container">
-                    <img src="{{ url_for('static', filename='logo.webp') }}" alt="InvisiCrypt Logo" class="logo">
-                    <!-- Fallback: <img src="../static/logo.webp" alt="InvisiCrypt Logo" class="logo"> -->
+                    <img src="static/logo.webp" alt="InvisiCrypt Logo" class="logo">
                 </div>
                 <div>
                     <h1>InvisiCrypt</h1>
@@ -291,7 +286,7 @@
         <div class="footer">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="{{ url_for('static', filename='logo.webp') }}" alt="InvisiCrypt Logo" class="footer-logo-img">
+                    <img src="static/logo.webp" alt="InvisiCrypt Logo" class="footer-logo-img">
                 </div>
                 <p class="copyright">
                     <span class="author">InvisiCrypt</span> - Advanced Steganography Platform<br>
